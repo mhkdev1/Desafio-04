@@ -5,6 +5,8 @@
  */
 package br.com.saks.imobiliaria.model;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Column;
@@ -25,6 +27,8 @@ import lombok.Data;
  *
  * @author 7915772
  */
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+
 @Data
 @Entity
 public class Imovel {
@@ -48,9 +52,7 @@ public class Imovel {
     @ManyToOne
     @JoinColumn(name = "id_TipoImovel")
     private TipoImovel tipoImovel;
-    
-    @OneToMany(mappedBy ="imovel")
-    private List<Interesse> interesses;
+     
     
     @Column(nullable = false, length = 100)
     private String titulo;

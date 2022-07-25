@@ -12,6 +12,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.OneToMany;
 import javax.persistence.Id;
+import javax.persistence.JoinColumns;
+import javax.persistence.ManyToMany;
 import lombok.Data;
 
 
@@ -26,6 +28,8 @@ public class Cliente {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
+    @ManyToMany(mappedBy = "clientes")
+    private List<Imovel> imoveis;
     
     @Column(length = 100)
     private String nome;
