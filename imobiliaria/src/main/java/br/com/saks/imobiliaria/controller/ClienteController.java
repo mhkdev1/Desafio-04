@@ -5,10 +5,15 @@
  */
 package br.com.saks.imobiliaria.controller;
 
+import static br.com.saks.criptografia.Criptografia.criptografar;
 import br.com.saks.imobiliaria.model.Cliente;
 import br.com.saks.imobiliaria.repository.ClienteRepository;
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 import java.util.Optional;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -42,7 +47,8 @@ public class ClienteController {
     }
     
     @PostMapping
-    public Cliente adicionar(@RequestBody Cliente cliente) {
+    public Cliente adicionar(@RequestBody Cliente cliente) throws NoSuchAlgorithmException, UnsupportedEncodingException {
+        cliente.setSenha(criptografar(cliente.getSenha()));
         return clienteRepository.save(cliente);
     }
     
@@ -51,7 +57,13 @@ public class ClienteController {
         return clienteRepository.findById(id)
                 .map(record -> {
                     record.setNome(cliente.getNome());
-                    record.setEmail(cliente.getEmail());
+            try {
+                record.setEmail(criptografar(cliente.getEmail()));
+            } catch (NoSuchAlgorithmException ex) {
+                Logger.getLogger(ClienteController.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (UnsupportedEncodingException ex) {
+                Logger.getLogger(ClienteController.class.getName()).log(Level.SEVERE, null, ex);
+            }
                     record.setSenha(cliente.getSenha());
                     Cliente clienteUpdated = clienteRepository.save(record);
                     return ResponseEntity.ok().body(clienteUpdated);
