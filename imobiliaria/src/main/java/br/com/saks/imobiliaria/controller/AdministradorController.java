@@ -49,8 +49,8 @@ public class AdministradorController {
                     record.setNome(administrador.getNome());
                     record.setEmail(administrador.getEmail());
                     record.setSenha(administrador.getSenha());
-                    Administrador clienteUpdated = administradorRepository.save(record);
-                    return ResponseEntity.ok().body(clienteUpdated);
+                    Administrador adminUpdated = administradorRepository.save(record);
+                    return ResponseEntity.ok().body(adminUpdated);
                 }).orElse(ResponseEntity.notFound().build());
     }
     
