@@ -67,4 +67,5 @@ public class ImovelController {
                     return ResponseEntity.ok().build();
                 }).orElse(ResponseEntity.notFound().build());
     }
+
 }
