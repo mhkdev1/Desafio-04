@@ -100,7 +100,7 @@ class ImobiliariaApplicationTests {
        imovel.setDescricao("Testa");
        imovel.setValor(3030);
        imovel.setStatus(1);
-       mockMvc.perform(MockMvcRequestBuilders.put("/imoveis/{id}",2)
+       mockMvc.perform(MockMvcRequestBuilders.put("/imoveis/{id}",1)
        .contentType(MediaType.APPLICATION_JSON)
        .content(objectMapper.writeValueAsString(imovel)))
        .andExpect(status().isOk());

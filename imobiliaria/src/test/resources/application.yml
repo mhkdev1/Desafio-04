@@ -2,7 +2,7 @@ spring:
     datasource:
         url: jdbc:postgresql://localhost:5432/imobiliaria-teste
         username: postgres
-        password: 123456
+        password: 1212
         tomcat:
             testOnBorrow: true
             validationQuery: SELECT 1
