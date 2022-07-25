@@ -5,7 +5,7 @@
  */
 package br.com.saks.imobiliaria.controller;
 
-import static br.com.saks.criptografia.Criptografia.criptografar;
+import static br.com.saks.utils.Criptografia.criptografar;
 import br.com.saks.imobiliaria.model.Cliente;
 import br.com.saks.imobiliaria.repository.ClienteRepository;
 import java.io.UnsupportedEncodingException;
