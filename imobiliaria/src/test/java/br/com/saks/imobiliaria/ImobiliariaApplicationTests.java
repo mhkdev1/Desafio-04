@@ -1,6 +1,7 @@
 package br.com.saks.imobiliaria;
 
 
+import br.com.saks.imobiliaria.model.Cliente;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,5 +28,17 @@ class ImobiliariaApplicationTests {
     void contextLoads() {
     }
     
+    @Test
+    void createCliente()throws Exception {
+        Cliente cliente = new Cliente();
+        cliente.setNome("Teste");
+        cliente.setSenha("Teste");
+        cliente.setEmail("Teste@Teste");
+        cliente.setTelefone("Teste");
+        mockMvc.perform(MockMvcRequestBuilders.post("/clientes")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(cliente)))
+                .andExpect(status().isOk());
+    }
 
 }

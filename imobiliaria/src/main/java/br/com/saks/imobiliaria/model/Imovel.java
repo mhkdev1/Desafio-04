@@ -45,9 +45,7 @@ public class Imovel {
         inverseJoinColumns = @JoinColumn(name = "id_cliente")
     )
     private List<Cliente> clientes;
-    
-    
-    
+ 
     
     @ManyToOne
     @JoinColumn(name = "id_TipoImovel")
