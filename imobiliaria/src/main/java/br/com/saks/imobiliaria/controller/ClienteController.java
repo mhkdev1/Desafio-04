@@ -62,14 +62,7 @@ public class ClienteController {
           
                 record.setEmail(cliente.getEmail());
             
-            try {
                 record.setSenha(criptografar(cliente.getSenha()));
-                
-            } catch (NoSuchAlgorithmException ex) {
-                Logger.getLogger(ClienteController.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (UnsupportedEncodingException ex) {
-                Logger.getLogger(ClienteController.class.getName()).log(Level.SEVERE, null, ex);
-            }
                     Cliente clienteUpdated = clienteRepository.save(record);
                     return ResponseEntity.ok().body(clienteUpdated);
                 }).orElse(ResponseEntity.notFound().build());

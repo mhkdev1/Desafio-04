@@ -43,7 +43,19 @@ class ImobiliariaApplicationTests {
                 .content(objectMapper.writeValueAsString(cliente)))
                 .andExpect(status().isOk());
     }
-    
+//    @Test
+//    void create2Cliente()throws Exception {
+//        Cliente cliente = new Cliente();
+//        cliente.setNome("Teste 2");
+//        cliente.setSenha("Teste 2");
+//        cliente.setEmail("Teste@Teste2");
+//        cliente.setTelefone("Teste2");
+//        mockMvc.perform(MockMvcRequestBuilders.post("/clientes")
+//                .contentType(MediaType.APPLICATION_JSON)
+//                .content(objectMapper.writeValueAsString(cliente)))
+//                .andExpect(status().isOk());
+//    }
+//    
     @Test
     void getCliente() throws Exception {
        mockMvc.perform(MockMvcRequestBuilders.get("/clientes")
@@ -54,31 +66,31 @@ class ImobiliariaApplicationTests {
     @Test
     void alteraCliente() throws Exception {
        Cliente cliente = new Cliente();
-       cliente.setNome("Testa");
-       cliente.setSenha("Testa");
-       cliente.setEmail("Testa@Testa");
-       cliente.setTelefone("Testa");
-       mockMvc.perform(MockMvcRequestBuilders.put("/clientes/{id}",2)
+       cliente.setNome("Alterado");
+       cliente.setSenha("TestaAlterado");
+       cliente.setEmail("Testa@Alterado");
+       cliente.setTelefone("Testa alterado");
+       mockMvc.perform(MockMvcRequestBuilders.put("/clientes/{id}",3)
        .contentType(MediaType.APPLICATION_JSON)
        .content(objectMapper.writeValueAsString(cliente)))
        .andExpect(status().isOk());
    }
     
-    /*@Test
+    @Test
     void deletaCliente() throws Exception {
-         mockMvc.perform(MockMvcRequestBuilders.delete("/clientes/{id}",1)
+         mockMvc.perform(MockMvcRequestBuilders.delete("/clientes/{id}",4)
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
-    }*/
+    }
 
     @Test
     void createImovel() throws Exception {
         Imovel imovel = new Imovel();
-        imovel.setTitulo("Teste");
-        imovel.setDescricao("Teste");
+        imovel.setTitulo("Teste2dddd");
+        imovel.setDescricao("Teste2ddddd");
         imovel.setDataCriacao(new Date());
-        imovel.setValor(2020);
-        imovel.setStatus(0);
+        imovel.setValor(20204);
+        imovel.setStatus(1);
         mockMvc.perform(MockMvcRequestBuilders.post("/imoveis")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(imovel)))
@@ -96,12 +108,12 @@ class ImobiliariaApplicationTests {
    @Test
    void alteraImovel() throws Exception {
        Imovel imovel = new Imovel();
-       imovel.setTitulo("Testa");
+       imovel.setTitulo("Alterado imovel");
        imovel.setDataCriacao(new Date());
-       imovel.setDescricao("Testa");
+       imovel.setDescricao("imovel legal");
        imovel.setValor(3030);
        imovel.setStatus(1);
-       mockMvc.perform(MockMvcRequestBuilders.put("/imoveis/{id}",1)
+       mockMvc.perform(MockMvcRequestBuilders.put("/imoveis/{id}",3)
        .contentType(MediaType.APPLICATION_JSON)
        .content(objectMapper.writeValueAsString(imovel)))
        .andExpect(status().isOk());
@@ -109,7 +121,7 @@ class ImobiliariaApplicationTests {
     
     @Test
     void deletaImovel() throws Exception {
-         mockMvc.perform(MockMvcRequestBuilders.delete("/imoveis/{id}",1)
+         mockMvc.perform(MockMvcRequestBuilders.delete("/imoveis/{id}",4)
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
     }
@@ -117,9 +129,9 @@ class ImobiliariaApplicationTests {
     @Test
     void createAdministrador()throws Exception {
         Administrador administrador = new Administrador();
-        administrador.setNome("Teste");
-        administrador.setSenha("Teste");
-        administrador.setEmail("Teste@Teste");
+        administrador.setNome("TesteCriado");
+        administrador.setSenha("TesteCriado");
+        administrador.setEmail("Teste@TesteCriado");
         administrador.setStatus(0);
         mockMvc.perform(MockMvcRequestBuilders.post("/administradores")
                 .contentType(MediaType.APPLICATION_JSON)
@@ -137,20 +149,20 @@ class ImobiliariaApplicationTests {
     @Test
     void alteraAdministrador() throws Exception {
        Administrador administrador = new Administrador();
-       administrador.setNome("Testa");
-       administrador.setSenha("Testa");
-       administrador.setEmail("Teste@Testa");
+       administrador.setNome("TestaPonto");
+       administrador.setSenha("TestaLararirara");
+       administrador.setEmail("Teste@Testaaaaaaaaa");
        administrador.setStatus(0);
-       mockMvc.perform(MockMvcRequestBuilders.put("/clientes/{id}",2)
+       mockMvc.perform(MockMvcRequestBuilders.put("/administradores/{id}",2)
        .contentType(MediaType.APPLICATION_JSON)
        .content(objectMapper.writeValueAsString(administrador)))
        .andExpect(status().isOk());
    }
     
-    /*@Test
+    @Test
     void deletaAdministrador() throws Exception {
-         mockMvc.perform(MockMvcRequestBuilders.delete("/clientes/{id}",1)
+         mockMvc.perform(MockMvcRequestBuilders.delete("/administradores/{id}",1)
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
-    }*/
+    }
 }

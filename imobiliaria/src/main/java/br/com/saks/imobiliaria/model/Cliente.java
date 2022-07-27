@@ -35,7 +35,7 @@ public class Cliente { // implements Serializable
     @Column(length = 100)
     private String nome;
     
-    @Column(nullable = false, length = 200)
+    @Column(nullable = false, length = 200, unique=true)
     private String email;
     
     @Column(nullable = false, length = 200)

@@ -60,13 +60,7 @@ public class AdministradorController {
                 .map(record -> {
                     record.setNome(administrador.getNome());
                     record.setEmail(administrador.getEmail());
-            try {
-                record.setSenha(criptografar(administrador.getSenha()));
-            } catch (NoSuchAlgorithmException ex) {
-                Logger.getLogger(AdministradorController.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (UnsupportedEncodingException ex) {
-                Logger.getLogger(AdministradorController.class.getName()).log(Level.SEVERE, null, ex);
-            }
+                    record.setSenha(criptografar(administrador.getSenha()));
                     Administrador adminUpdated = administradorRepository.save(record);
                     return ResponseEntity.ok().body(adminUpdated);
                 }).orElse(ResponseEntity.notFound().build());

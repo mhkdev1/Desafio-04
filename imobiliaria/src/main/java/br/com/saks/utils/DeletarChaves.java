@@ -4,14 +4,17 @@
  */
 package br.com.saks.utils;
 
-
-
+import br.com.saks.imobiliaria.repository.ClienteRepository;
+import br.com.saks.imobiliaria.repository.ImovelRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  *
  * @author mhkov
  */
-public class Validar {
+public class DeletarChaves {
     
+  
+   
     
 }
