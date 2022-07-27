@@ -6,6 +6,7 @@
 package br.com.saks.imobiliaria.model;
 
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -23,7 +24,7 @@ import lombok.Data;
  */
 @Data
 @Entity
-public class Cliente {
+public class Cliente { // implements Serializable
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -40,6 +41,6 @@ public class Cliente {
     @Column(nullable = false, length = 200)
     private String senha;
     
-    @Column(length = 15)
+    @Column(length = 15, unique=true)
     private String telefone;
 }

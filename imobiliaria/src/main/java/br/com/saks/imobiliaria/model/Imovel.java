@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import java.util.Date;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -31,7 +32,7 @@ import lombok.Data;
 
 @Data
 @Entity
-public class Imovel {
+public class Imovel { //implements Serializable
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

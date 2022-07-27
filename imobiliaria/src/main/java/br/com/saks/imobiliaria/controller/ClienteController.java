@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+//import org.springframework.cache.annotation.Cacheable;
 
 /**
  *
@@ -36,16 +37,17 @@ public class ClienteController {
     @Autowired
     private ClienteRepository clienteRepository;
     
+    //@Cacheable("listarTodos")
     @GetMapping
     public List<Cliente> listarTodos() {
         return clienteRepository.findAll();
     }
-    
+    //@Cacheable("listarTodos")
     @GetMapping(value="/{id}")
     public Optional<Cliente> listarPeloId(@PathVariable Long id) {
         return clienteRepository.findById(id);
     }
-    
+
     @PostMapping
     public Cliente adicionar(@RequestBody Cliente cliente) throws NoSuchAlgorithmException, UnsupportedEncodingException {
         cliente.setSenha(criptografar(cliente.getSenha()));

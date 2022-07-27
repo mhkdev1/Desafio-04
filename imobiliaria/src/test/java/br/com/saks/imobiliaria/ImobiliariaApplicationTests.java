@@ -1,6 +1,7 @@
 package br.com.saks.imobiliaria;
 
 
+import br.com.saks.imobiliaria.model.Administrador;
 import br.com.saks.imobiliaria.model.Cliente;
 import br.com.saks.imobiliaria.model.Imovel;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -106,9 +107,49 @@ class ImobiliariaApplicationTests {
        .andExpect(status().isOk());
    }
     
-    /*@Test
+    @Test
     void deletaImovel() throws Exception {
          mockMvc.perform(MockMvcRequestBuilders.delete("/imoveis/{id}",1)
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk());
+    }
+   
+    @Test
+    void createAdministrador()throws Exception {
+        Administrador administrador = new Administrador();
+        administrador.setNome("Teste");
+        administrador.setSenha("Teste");
+        administrador.setEmail("Teste@Teste");
+        administrador.setStatus(0);
+        mockMvc.perform(MockMvcRequestBuilders.post("/administradores")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(administrador)))
+                .andExpect(status().isOk());
+    }
+    
+    @Test
+    void getAdministrador() throws Exception {
+       mockMvc.perform(MockMvcRequestBuilders.get("/administradores")
+       .contentType(MediaType.APPLICATION_JSON))
+       .andExpect(status().isOk());
+   } 
+    
+    @Test
+    void alteraAdministrador() throws Exception {
+       Administrador administrador = new Administrador();
+       administrador.setNome("Testa");
+       administrador.setSenha("Testa");
+       administrador.setEmail("Teste@Testa");
+       administrador.setStatus(0);
+       mockMvc.perform(MockMvcRequestBuilders.put("/clientes/{id}",2)
+       .contentType(MediaType.APPLICATION_JSON)
+       .content(objectMapper.writeValueAsString(administrador)))
+       .andExpect(status().isOk());
+   }
+    
+    /*@Test
+    void deletaAdministrador() throws Exception {
+         mockMvc.perform(MockMvcRequestBuilders.delete("/clientes/{id}",1)
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
     }*/

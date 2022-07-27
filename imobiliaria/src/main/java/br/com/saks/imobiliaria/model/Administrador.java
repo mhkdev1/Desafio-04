@@ -18,7 +18,7 @@ import lombok.Data;
  */
 @Data
 @Entity
-public class Administrador {
+public class Administrador { // implements Serializable
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

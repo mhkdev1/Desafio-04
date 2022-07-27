@@ -7,6 +7,7 @@ package br.com.saks.imobiliaria.controller;
 
 import br.com.saks.imobiliaria.model.Imovel;
 import br.com.saks.imobiliaria.repository.ImovelRepository;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,11 +31,13 @@ public class ImovelController {
     @Autowired
     private ImovelRepository imovelRepository;
     
+    //@Cacheable("listarTodos")
     @GetMapping
     public List<Imovel> listarTodos() {
         return imovelRepository.findAll();
     }
     
+    //@Cacheable("listarPeloId")
     @GetMapping(value="/{id}")
     public Optional<Imovel> listarPeloId(@PathVariable Long id) {
         return imovelRepository.findById(id);
@@ -42,6 +45,7 @@ public class ImovelController {
     
     @PostMapping
     public Imovel adicionar(@RequestBody Imovel imovel) {
+        imovel.setDataCriacao(new Date());
         return imovelRepository.save(imovel);
     }
     

@@ -20,7 +20,7 @@ import lombok.Data;
  */
 @Data
 @Entity
-public class TipoImovel {
+public class TipoImovel { //implements Serializable
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

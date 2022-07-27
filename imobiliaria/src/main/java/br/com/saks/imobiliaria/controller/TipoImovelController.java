@@ -17,21 +17,27 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  *
  * @author 7915772
  */
+@RestController
+@RequestMapping("/tipoImoveis")
 public class TipoImovelController {
     
     @Autowired
     private TipoImovelRepository tipoimovelRepository;
     
+    //@Cacheable("listarTodos")
     @GetMapping
     public List<TipoImovel> listarTodos() {
         return tipoimovelRepository.findAll();
     }
     
+    //@Cacheable("listarPeloId")
     @GetMapping(value="/{id}")
     public Optional<TipoImovel> listarPeloId(@PathVariable Long id) {
         return tipoimovelRepository.findById(id);
